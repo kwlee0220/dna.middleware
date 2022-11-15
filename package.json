@@ -1,0 +1,36 @@
+{
+  "name": "ffmpeg",
+  "version": "1.0.0",
+  "description": "etri-basic ffmpeg rtsp hls conversion",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "\"echo \\\"Error : no test specified\\\" && exit 1\""
+  },
+  "keywords": [
+    "[]"
+  ],
+  "author": "Lee Seung Jae",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "body-parser": "^1.20.0",
+    "child_process": "^1.0.2",
+    "child-process": "^1.0.2",
+    "express": "^4.18.1",
+    "get-json": "^1.0.1",
+    "http-auth": "^4.1.9",
+    "kafka-node": "^5.0.0",
+    "kafkajs": "^2.1.0",
+    "node-digest-auth-client": "^1.0.6",
+    "node-rtsp-stream": "^0.0.9",
+    "nodemon": "^2.0.18",
+    "pg": "^8.7.3",
+    "properties-reader": "^2.2.0",
+    "request": "^2.88.2",
+    "request-ip": "^3.3.0",
+    "socket.io": "^4.5.1",
+    "ws": "^8.8.0",
+    "xml2js": "^0.4.23"
+  }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmpeg/0.1/jsmpg.js"></script>
+</head>
+<body>
+
+<canvas id="web1"></canvas>
+
+<canvas id="web2"></canvas>
+
+<script>
+var web1_client = new WebSocket('ws://192.168.35.101:28090');
+var web1_canvas = document.querySelector('#web1');
+var web1_player = new jsmpeg(web1_client, {
+	canvas: web1_canvas
+});
+
+var web2_client = new WebSocket('ws://192.168.35.101:28091');
+var web2_canvas = document.querySelector('#web2');
+var web2_player = new jsmpeg(web2_client, {
+	canvas: web2_canvas
+});
+</script>
+</body>
+</html>
