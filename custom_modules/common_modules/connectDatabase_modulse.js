@@ -14,12 +14,12 @@ function databaseMapper(query){
 
   return new Promise(function(resulove, reject){
     /** DB information 설정 */
-    const ip = basicProp.get("DNA_MW_JDBC_CONNECT");
-    const databaseName = basicProp.get("DNA_MW_JDBC_DB");
+    const ip = process.env.DNA_MW_JDBC_CONNECT||basicProp.get("DNA_MW_JDBC_CONNECT");
+    const databaseName = process.env.DNA_MW_JDBC_DB||basicProp.get("DNA_MW_JDBC_DB");
 
     const postgres = basicProp.get("db.database");
-    const username = basicProp.get("DNA_MW_JDBC_USER");
-    const password = basicProp.get("DNA_MW_JDBC_PASSWD");
+    const username = process.env.DNA_MW_JDBC_USER || basicProp.get("DNA_MW_JDBC_USER");
+    const password = process.env.DNA_MW_JDBC_PASSWD || basicProp.get("DNA_MW_JDBC_PASSWD");
     
     
     const databaseUrl = postgres + "://" + username + ":" + password + "@" + ip + "/" + databaseName;

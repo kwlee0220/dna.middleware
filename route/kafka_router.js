@@ -78,7 +78,7 @@ function initConsumer() {
 
       if(!client) {        
         const basicProp = PropsReader('../properties/basicProxy.properties');
-        initKafkaClient('node-tracks', basicProp.get("DNA_MW_KAFKA_SERVERS"));
+        initKafkaClient('node-tracks', process.env.DNA_MW_KAFKA_SERVERS||basicProp.get("DNA_MW_KAFKA_SERVERS"));
       }
       if(!consumer) {
         

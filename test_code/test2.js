@@ -17,7 +17,7 @@ async function test(){
     const nvrAuthName = nvrVo[0].nvr_username; 
     const nvrAuthPass = nvrVo[0].nvr_password;
 
-    const wsPort_stream = basicProp.get("DNA_MW_WEBSOCK_PREVIEW_PORT"); 
+    const wsPort_stream = process.env.DNA_MW_WEBSOCK_PREVIEW_PORT||basicProp.get("DNA_MW_WEBSOCK_PREVIEW_PORT"); 
     //const cctvNo = req.params.cctvNo;
     const cctvNo = "0";
 

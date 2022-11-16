@@ -7,16 +7,14 @@ function sendMessageRabbit(_id, _node, _rtspUri) {
     var node = _node || 'etri:041';
     var rtspUri = _rtspUri;
 
-    var rabbit_id = 'admin'; // properties 사용
-    var rabbit_pw = 'admin'; // properties 사용
-    var rabbit_ip = 'localhost'; // properties 사용
-    var rabbit_port = '5672'; // properties 사용
-
+    var rabbit_id = process.env.DNA_MW_RABBITMQ_ID||'admin'; // properties 사용
+    var rabbit_pw = process.env.DNA_MW_RABBITMQ_PASSWD||'admin'; // properties 사용
+    var rabbit_ip = process.env.DNA_MW_RABBITMQ_CONNECT||'localhost:5672'; // properties 사용
     if(!_rtspUri) {
         return 'error';
     } else {
         try {
-            amqp.connect('amqp://' + rabbit_id + ':' + rabbit_pw +'@' + rabbit_ip + ':' + rabbit_port, function(err, connection){
+            amqp.connect('amqp://' + rabbit_id + ':' + rabbit_pw +'@' + rabbit_ip, function(err, connection){
                 if(err) {console.log(err);}
                 else  {
                   connection.createChannel(function(error1, channel) {

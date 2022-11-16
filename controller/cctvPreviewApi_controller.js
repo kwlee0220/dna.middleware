@@ -21,10 +21,10 @@ function getPreviewHost(req, res){
 
     
     // 접속한 web 클라이언트 ip
-    const wsIP = basicProp.get("DNA_MW_WEBSOCK_HOST");
+    const wsIP = process.env.DNA_MW_WEBSOCK_HOST||basicProp.get("DNA_MW_WEBSOCK_HOST");
     // const wsIP = basicProp.get("ws.ip"); // test용 properties 파일 내용
    
-    const wsPort = basicProp.get("DNA_MW_WEBSOCK_PREVIEW_PORT");
+    const wsPort = process.env.DNA_MW_WEBSOCK_PREVIEW_PORT||basicProp.get("DNA_MW_WEBSOCK_PREVIEW_PORT");
     const resString = "wsIP=" + wsIP + "\r\nwsPort=" + wsPort;
 
     console.log("\r\nLoad Preview Websocket URL information");
@@ -47,7 +47,7 @@ async function readData(req, res){
     const nvrAuthName = nvrVo[0].nvr_username; 
     const nvrAuthPass = nvrVo[0].nvr_password;
 
-    const wsPort_stream = basicProp.get("DNA_MW_WEBSOCK_PREVIEW_PORT"); 
+    const wsPort_stream = process.env.DNA_MW_WEBSOCK_PREVIEW_PORT||basicProp.get("DNA_MW_WEBSOCK_PREVIEW_PORT"); 
     const cctvNo = Number(req.params.cctvNo) - 1;
 
     // CCTV 연결상태 확인

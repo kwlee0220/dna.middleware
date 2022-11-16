@@ -22,7 +22,7 @@ function getStreamHost(req, res){
     // const wsIP = basicProp.get("ws.ip"); // test용 properties 파일 내용
     
     console.log("websocket client IP : " + wsIP);
-    const wsPort = basicProp.get("DNA_MW_WEBSOCK_STREAM_PORTS");
+    const wsPort = process.env.DNA_MW_WEBSOCK_STREAM_PORTS||basicProp.get("DNA_MW_WEBSOCK_STREAM_PORTS");
     const wsPort1 = wsPort.split(",")[0];
     const wsPort2 = wsPort.split(",")[1];
     const wsPort3 = wsPort.split(",")[2];
@@ -86,7 +86,7 @@ async function readData(req, res){
     const nvrAuthPass = nvrVo[0].nvr_password;
     
     const wsPort_stream = new Array();
-    const wsPort = basicProp.get("DNA_MW_WEBSOCK_STREAM_PORTS");
+    const wsPort = process.env.DNA_MW_WEBSOCK_STREAM_PORTS||basicProp.get("DNA_MW_WEBSOCK_STREAM_PORTS");
     wsPort_stream[0] = wsPort.split(",")[0];    
     wsPort_stream[1] = wsPort.split(",")[1];    
     wsPort_stream[2] = wsPort.split(",")[2];    

@@ -17,10 +17,10 @@ let recStream;
 /** 녹화영상 Webserver IP&Port 전송 */
 function getReplayHost(req, res){
   // 접속한 web 클라이언트 ip
-  const wsIp = basicProp.get("DNA_MW_WEBSOCK_HOST");
+  const wsIp = process.env.DNA_MW_WEBSOCK_HOST||basicProp.get("DNA_MW_WEBSOCK_HOST");
   // const wsIP = basicProp.get("ws.ip"); // test용 properties 파일 내용
 
-  const wsPort = basicProp.get("DNA_MW_WEBSOCK_REPLAY_PORT");
+  const wsPort = process.env.DNA_MW_WEBSOCK_REPLAY_PORT||basicProp.get("DNA_MW_WEBSOCK_REPLAY_PORT");
   const resString = "wsIP=" + wsIp + "\r\nwsPort=" + wsPort;
 
   console.log("\r\nLoad Replay Websocket URL information");
@@ -45,7 +45,7 @@ async function readData(req, res){
     const nvrAuthPass = nvrVo[0].nvr_password;
     console.log(nvrVo);
     
-    const wsPort_replay = basicProp.get("DNA_MW_WEBSOCK_REPLAY_PORT"); 
+    const wsPort_replay = process.env.DNA_MW_WEBSOCK_REPLAY_PORT||basicProp.get("DNA_MW_WEBSOCK_REPLAY_PORT"); 
 
     const cctvNo = Number(req.params.cctvNo) - 1;
     const searchDate = req.params.searchDate;
